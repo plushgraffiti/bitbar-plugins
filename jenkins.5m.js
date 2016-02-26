@@ -17,8 +17,8 @@ function status(result) {
   } else if (result === 'yellow') {
     return '☁ ';
   } else {
-  	return '☂ ';
-	}
+    return '☂ ';
+  }
 }
 
 function color(result) {
@@ -27,32 +27,32 @@ function color(result) {
   } else if (result === 'yellow') {
     return 'orange';
   } else {
-		return 'red';
-	}
+    return 'red';
+  }
 }
 
 function report(project){
-	if (project.healthReport.length > 0) {
-		return "\n\t" + project.healthReport[0].description + " | length=50";
-	} else {
-		return "\nJob aborted: No build history available";
-	}
+  if (project.healthReport.length > 0) {
+    return "\n\t" + project.healthReport[0].description + " | length=50";
+  } else {
+    return "\nJob aborted: No build history available";
+  }
 }
 
 function statusIcon(statuses) {
-	if (statuses.indexOf("aborted") >= 0) {
-		return "Jn | color=red font=Helvetica-Bold size=16"
-	} else if (statuses.indexOf("yellow") >= 0) {
-		return "Jn | color=orange font=Helvetica-Bold size=16"
-	} else {
-		return "Jn | color=green font=Helvetica-Bold size=16"
-	}
+  if (statuses.indexOf("aborted") >= 0) {
+    return "Jn | color=red font=Helvetica-Bold size=16"
+  } else if (statuses.indexOf("yellow") >= 0) {
+    return "Jn | color=orange font=Helvetica-Bold size=16"
+  } else {
+    return "Jn | color=green font=Helvetica-Bold size=16"
+  }
 }
 
 function handleResponse(body) {
-	var statuses = [];
+  var statuses = [];
   var output = body.jobs.map(function(project){
-		statuses.push(project.color)
+    statuses.push(project.color)
     return [status(project.color), project.name, ' | color=', color(project.color), ' href=', project.url, report(project)].join('');
   }).join('\n---\n');
   console.log(statusIcon(statuses) + '\n---\n' + output);
