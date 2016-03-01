@@ -55,8 +55,7 @@ function statusIcon(states) {
 function timeSince(timeStamp) {
   // Expects timeStamp as a string, similar to: 2016-02-17T16:12:39Z
   var timeStamp = new Date(Date.parse(timeStamp));
-  var now = new Date(),
-  secondsPast = (now.getTime() - timeStamp.getTime()) / 1000;
+  var now = new Date(), secondsPast = (now.getTime() - timeStamp.getTime()) / 1000;
   if(secondsPast < 60){
     return parseInt(secondsPast) + 's';
   }
