@@ -14,7 +14,7 @@ var user = 'ACCOUNT_USER_GOES_HERE'
 var pass = 'ACCOUNT_PASSWORD_GOES_HERE'
 var app_key = 'APP KEY GOES HERE'
 
-var auth = "Basic " + new Buffer(user + ":" + pass).toString("base64");
+var auth = "Basic " + new Buffer.from(user + ":" + pass).toString("base64");
 var options = {
   host: 'api.pingdom.com',
   port: 443,
